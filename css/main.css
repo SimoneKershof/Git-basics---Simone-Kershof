@@ -1,60 +1,196 @@
-.grid {
-  display: grid;
-  grid-template-columns:  1fr 1fr 1fr 1fr;
-  grid-template-rows: 25vh 50vh 25vh;
-  grid-gap: 1em;
-  grid-template-areas: 
-  	"header header header header"
-  	"food water omw fuel"
-  	"footer footer footer footer"
-  ;
+/* Grid */
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
+.column {
+  flex-basis: 100%;
 }
 
-header,
-.food, .fuel, .water, .omw,
-footer {
+.column img{
+  margin-left: 81px;
 }
-/* Demo Specific Styles */
-body {
-  margin: 0 auto;
-  width: 100%;
-  background-color: #27272e;
-}
-
-/*.grid > * {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}*/
 header{
-	grid-area: header; 
-/*  background-image: url("../images/header_desktop.png");
-  background-repeat: no-repeat;*/
+  height: 30vh;
+  background-size: contain;
+  background-repeat: no-repeat;
   width: 100%;
-  height:100%;
-  min-width: 500px
+  position: absolute; 
+  z-index: 100;
 }
-
-header img{
-  width: 100%
-}
-
-.food{
-	grid-area: food;
-}
-
-.water{
-	grid-area: water;
-}
-
-.omw{
-	grid-area: omw;
-}
-
-.fuel{
-	grid-area: fuel;
-}
-
 footer{
-	grid-area: footer;
+  height: auto;
+  z-index: 100;
+  width: 100%;
+  position: absolute;
+}
+
+.foodsupply{
+  position: center;
+}
+
+.crossfade{
+    position:relative;
+    height:250px;
+    width:400px;
+    z-index: 1;
+}
+
+.crossfade img{
+    position:absolute;
+    left:0;
+    opacity: 1;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;    
+    transition: opacity 1s ease-in-out;
+}
+
+.crossfade img.top:hover {
+    opacity:0;
+}
+
+  @keyframes cf3FadeInOut {
+  0% {
+  opacity:1;
+}
+45% {
+opacity:1;
+}
+55% {
+opacity:0;
+}
+100% {
+opacity:0;
+}
+}
+
+.crossfade img.top {
+animation-name: cf3FadeInOut;
+animation-timing-function: ease-in-out;
+animation-iteration-count: infinite;
+animation-duration: 5s;
+animation-direction: alternate;
+animation-delay: 5s;
+}
+
+.crossfade img.bottom {
+animation-name: cf3FadeInOut;
+animation-timing-function: ease-in-out;
+animation-iteration-count: infinite;
+animation-duration: 5s;
+animation-direction: alternate;
+}
+header img {
+    height: auto;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+footer img {
+    height: auto;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .large{
+    display: none;
+  }
+  .row{
+    margin-top: 100px;
+  }
+  .column img{
+    width: 100vw;
+    margin-left: 0px;
+  
+  }
+  .column {
+  flex-basis: 100%;
+}
+.crossfade{
+  height: 200px;
+}
+}
+
+@media screen and (min-width: 800px) {
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100vh;
+  }
+  .column {
+    flex: 1;
+    margin-left: 20px;
+    margin-top: 90px;
+  }
+
+
+  ._25 {
+    flex: 2.5;
+  }
+  .column img{
+  margin-left: 81px;
+  height:900px;
+  }
+
+  .small{
+    display: none;
+  }
+}
+}
+@media screen and (min-width: 1500px) {
+  body{
+    overflow: hidden;
+  }
+  .column img{
+  margin-left: 81px;
+  height:900px;
+  }
+  .row{
+    margin-left: 130px;
+  }
+
+.foodsupply {
+    margin-top: 130px;
+  }
+.watersupply{
+      margin-top: 69px;
+}
+.waytogo{
+      margin-top: 69px;
+
+}
+.fuel{
+  margin-top: 120px;
+}
+}
+
+/* Style */
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.3em;
+  color: #ccc;
+  background: #000;
+  margin-bottom: 70px;
+
+}
+
+.div {
+
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1,
+h2 {
+  text-align: center;
 }
